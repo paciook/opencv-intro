@@ -3,12 +3,8 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 
-cap.set(3,120) # Width
-cap.set(4,80) # Height
 
-cap.set(10,255) # Brightness
-
-kernel = np.ones((3,3),np.uint8)
+kernel = np.ones((5,5), np.uint8)
 
 while True:
 	# Read the status of the operation and get the frame
@@ -20,8 +16,13 @@ while True:
 	img_dialation = cv2.dilate(img_canny, kernel, iterations=1)
 	img_eroded = cv2.erode(img_dialation, kernel, iterations=1)
 
+	img_resized = cv2.resize(img, (300,200))
+
+	img_cropped = img[100:100+300, 400:400+250]
+
 	# Show the frame
-	cv2.imshow("Webcam", img_eroded)
+	cv2.imshow("Webcam", img_cropped)
+	print(img.shape)
 
 	# If q is pressed, exit
 	if cv2.waitKey(1) & 0xFF == ord("q"):

@@ -21,7 +21,7 @@ while True:
 	img_cropped = img[100:100+300, 400:400+250]
 
 	# Show the frame
-	cv2.imshow("Webcam", img_cropped)
+	cv2.imshow("Webcam", img_eroded)
 	print(img.shape)
 
 	# If q is pressed, exit
